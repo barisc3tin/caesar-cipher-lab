@@ -134,9 +134,14 @@ export default function CaesarCipherLab() {
         <span className="text-[#19C37D] text-lg">by Barış Çetin 2025</span>
       </motion.h1>
 
-      <div className="flex flex-col md:flex-row justify-center items-center w-full">
-        {/* Sol taraf */}
-        <div className="w-full md:w-1/2 flex justify-center p-4">
+      <div className="flex flex-col items-center justify-center w-full max-w-4xl mx-auto gap-8">
+        {/* Cipher Wheel */}
+        <div className="flex justify-center items-center">
+          <CipherWheel shift={shift} />
+        </div>
+
+        {/* Controls */}
+        <div className="w-full max-w-2xl px-4">
           <Card>
             <CardContent>
               <Input
@@ -145,7 +150,7 @@ export default function CaesarCipherLab() {
                 onChange={(e) => setText(e.target.value)}
                 className="bg-[#40414F] border-none text-[#ECECF1] placeholder-[#8E8EA0] w-full"
               />
-              <div className="flex flex-wrap gap-2 items-center">
+              <div className="flex flex-wrap gap-2 items-center justify-center">
                 <label className="font-medium">Shift:</label>
                 <Input
                   type="number"
@@ -184,11 +189,6 @@ export default function CaesarCipherLab() {
               </div>
             </CardContent>
           </Card>
-        </div>
-
-        {/* Sağ taraf */}
-        <div className="w-full md:w-1/2 flex justify-center items-center p-4">
-          <CipherWheel shift={shift} />
         </div>
       </div>
     </div>
