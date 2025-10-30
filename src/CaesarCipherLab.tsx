@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+
 const Card = ({ children }: { children: React.ReactNode }) => (
-  <div className="rounded-xl bg-[#444654] p-4 shadow-lg">{children}</div>
+  <div className="rounded-xl bg-[#444654] p-4 shadow-lg w-full max-w-md">{children}</div>
 );
 
 const CardContent = ({ children }: { children: React.ReactNode }) => (
@@ -25,15 +26,12 @@ const Button = ({
   </button>
 );
 
-const Input = ({
-  ...props
-}: React.InputHTMLAttributes<HTMLInputElement>) => (
+const Input = ({ ...props }: React.InputHTMLAttributes<HTMLInputElement>) => (
   <input
     {...props}
     className={`rounded-md px-3 py-2 outline-none ${props.className}`}
   />
 );
-
 
 function CipherWheel({ shift }: { shift: number }) {
   const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
@@ -133,54 +131,60 @@ export default function CaesarCipherLab() {
         Caesar Cipher Learning Lab
       </motion.h1>
 
-      <div className="flex flex-col md:flex-row gap-8 items-center">
-        <Card className="w-full max-w-md bg-[#444654] text-[#ECECF1] shadow-xl">
-          <CardContent className="p-6 flex flex-col gap-4">
-            <Input
-              placeholder="Enter your message..."
-              value={text}
-              onChange={(e) => setText(e.target.value)}
-              className="bg-[#40414F] border-none text-[#ECECF1] placeholder-[#8E8EA0]"
-            />
-            <div className="flex gap-2 items-center">
-              <label className="font-medium">Shift:</label>
+      <div className="flex flex-col md:flex-row items-center justify-center gap-8 w-full max-w-6xl mx-auto">
+        <div className="flex-1 flex justify-center">
+          <Card>
+            <CardContent>
               <Input
-                type="number"
-                min="0"
-                max="25"
-                value={shift}
-                onChange={(e) => setShift(Number(e.target.value))}
-                className="w-20 bg-[#40414F] border-none text-[#ECECF1]"
+                placeholder="Enter your message..."
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+                className="bg-[#40414F] border-none text-[#ECECF1] placeholder-[#8E8EA0] w-full"
               />
-              <Button
-                variant={mode === 'encrypt' ? 'default' : 'outline'}
-                className="bg-[#10A37F] text-white hover:bg-[#0E8C6E] border-none"
-                onClick={() => setMode('encrypt')}
-              >
-                Encrypt
-              </Button>
-              <Button
-                variant={mode === 'decrypt' ? 'default' : 'outline'}
-                className="bg-[#10A37F] text-white hover:bg-[#0E8C6E] border-none"
-                onClick={() => setMode('decrypt')}
-              >
-                Decrypt
-              </Button>
-              <Button
-                onClick={handleProcess}
-                className="bg-[#19C37D] text-white border-none hover:bg-[#0E8C6E]"
-              >
-                Process
-              </Button>
-            </div>
-            <div className="bg-[#40414F] p-4 rounded-lg shadow-inner">
-              <h2 className="font-semibold mb-2 text-[#19C37D]">Result:</h2>
-              <p className="text-lg font-mono break-words">{result}</p>
-            </div>
-          </CardContent>
-        </Card>
+              <div className="flex flex-wrap gap-2 items-center">
+                <label className="font-medium">Shift:</label>
+                <Input
+                  type="number"
+                  min="0"
+                  max="25"
+                  value={shift}
+                  onChange={(e) => setShift(Number(e.target.value))}
+                  className="w-20 bg-[#40414F] border-none text-[#ECECF1]"
+                />
+                <Button
+                  onClick={() => setMode('encrypt')}
+                  className={`bg-[#10A37F] text-white hover:bg-[#0E8C6E] border-none ${
+                    mode === 'encrypt' ? 'ring-2 ring-[#19C37D]' : ''
+                  }`}
+                >
+                  Encrypt
+                </Button>
+                <Button
+                  onClick={() => setMode('decrypt')}
+                  className={`bg-[#10A37F] text-white hover:bg-[#0E8C6E] border-none ${
+                    mode === 'decrypt' ? 'ring-2 ring-[#19C37D]' : ''
+                  }`}
+                >
+                  Decrypt
+                </Button>
+                <Button
+                  onClick={handleProcess}
+                  className="bg-[#19C37D] text-white border-none hover:bg-[#0E8C6E]"
+                >
+                  Process
+                </Button>
+              </div>
+              <div className="bg-[#40414F] p-4 rounded-lg shadow-inner">
+                <h2 className="font-semibold mb-2 text-[#19C37D]">Result:</h2>
+                <p className="text-lg font-mono break-words">{result}</p>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
 
-        <CipherWheel shift={shift} />
+        <div className="flex-1 flex justify-center">
+          <CipherWheel shift={shift} />
+        </div>
       </div>
     </div>
   );
