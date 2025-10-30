@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
 const Card = ({ children }: { children: React.ReactNode }) => (
-  <div className="rounded-xl bg-[#444654] p-6 shadow-lg w-full">{children}</div>
+  <div className="rounded-xl bg-[#444654] p-6 shadow-lg w-full h-full flex flex-col justify-center">
+    {children}
+  </div>
 );
 
 const CardContent = ({ children }: { children: React.ReactNode }) => (
-  <div className="space-y-4">{children}</div>
+  <div className="space-y-4 w-full">{children}</div>
 );
 
 const Button = ({
@@ -40,12 +42,12 @@ function CipherWheel({ shift }: { shift: number }) {
   const rotation = (shift * 360) / 26;
 
   return (
-    <div className="relative w-[300px] h-[300px] flex items-center justify-center">
-      <svg width="300" height="300" viewBox="0 0 300 300" className="absolute">
+    <div className="relative w-[340px] h-[340px] flex items-center justify-center">
+      <svg width="340" height="340" viewBox="0 0 340 340" className="absolute">
         {alphabet.map((letter, i) => {
           const angle = i * step - Math.PI / 2;
-          const x = 150 + radius * Math.cos(angle);
-          const y = 150 + radius * Math.sin(angle);
+          const x = 170 + radius * Math.cos(angle);
+          const y = 170 + radius * Math.sin(angle);
           return (
             <text
               key={i}
@@ -64,17 +66,17 @@ function CipherWheel({ shift }: { shift: number }) {
       </svg>
 
       <motion.svg
-        width="260"
-        height="260"
-        viewBox="0 0 300 300"
+        width="300"
+        height="300"
+        viewBox="0 0 340 340"
         className="absolute"
         animate={{ rotate: rotation }}
         transition={{ type: 'spring', stiffness: 100, damping: 10 }}
       >
         {alphabet.map((letter, i) => {
           const angle = i * step - Math.PI / 2;
-          const x = 150 + (radius - 30) * Math.cos(angle);
-          const y = 150 + (radius - 30) * Math.sin(angle);
+          const x = 170 + (radius - 30) * Math.cos(angle);
+          const y = 170 + (radius - 30) * Math.sin(angle);
           return (
             <text
               key={i}
@@ -128,12 +130,13 @@ export default function CaesarCipherLab() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        Caesar Cipher Learning Lab <span className="text-[#19C37D] text-lg">by Barış Çetin</span>
+        Caesar Cipher Learning Lab{' '}
+        <span className="text-[#19C37D] text-lg">by Barış Çetin 2025</span>
       </motion.h1>
 
-      <div className="flex flex-col md:flex-row items-center justify-center gap-12 w-full max-w-6xl mx-auto">
-        {/* Sol taraf: Form */}
-        <div className="md:w-1/2 w-full flex justify-center px-4">
+      <div className="flex flex-col md:flex-row justify-center items-center w-full">
+        {/* Sol taraf */}
+        <div className="w-full md:w-1/2 flex justify-center p-4">
           <Card>
             <CardContent>
               <Input
@@ -183,8 +186,8 @@ export default function CaesarCipherLab() {
           </Card>
         </div>
 
-        {/* Sağ taraf: Cipher Wheel */}
-        <div className="md:w-1/2 w-full flex justify-center items-center px-4">
+        {/* Sağ taraf */}
+        <div className="w-full md:w-1/2 flex justify-center items-center p-4">
           <CipherWheel shift={shift} />
         </div>
       </div>
