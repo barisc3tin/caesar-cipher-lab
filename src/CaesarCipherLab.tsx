@@ -131,7 +131,7 @@ export default function CaesarCipherLab() {
         animate={{ opacity: 1, y: 0 }}
       >
         Caesar Cipher Learning Lab{' '}
-        <span className="text-[#19C37D] text-lg">by Barış Çetin 2025</span>
+        <span className="text-[#19C37D] text-lg">by Barış Çetin</span>
       </motion.h1>
 
       <div className="flex flex-col items-center justify-center w-full max-w-4xl mx-auto gap-8">
