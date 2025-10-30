@@ -128,7 +128,7 @@ export default function CaesarCipherLab() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        Caesar Cipher Learning Lab by Baris Cetin
+        Caesar Cipher Learning Lab by Baris Cetins
       </motion.h1>
 
       <div className="flex flex-col md:flex-row items-center justify-center gap-8 w-full max-w-6xl mx-auto">
