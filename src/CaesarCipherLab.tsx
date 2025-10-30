@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
 const Card = ({ children }: { children: React.ReactNode }) => (
-  <div className="rounded-xl bg-[#444654] p-4 shadow-lg w-full max-w-md">{children}</div>
+  <div className="rounded-xl bg-[#444654] p-6 shadow-lg w-full">{children}</div>
 );
 
 const CardContent = ({ children }: { children: React.ReactNode }) => (
@@ -122,17 +122,18 @@ export default function CaesarCipherLab() {
   };
 
   return (
-    <div className="min-h-screen bg-[#343541] text-[#ECECF1] flex flex-col items-center py-10 px-4">
+    <div className="min-h-screen bg-[#343541] text-[#ECECF1] flex flex-col items-center justify-center py-10 px-6">
       <motion.h1
-        className="text-4xl font-bold mb-8 text-[#10A37F]"
+        className="text-4xl font-bold mb-8 text-[#10A37F] text-center"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        Caesar Cipher Learning Lab by Baris Cetins
+        Caesar Cipher Learning Lab <span className="text-[#19C37D] text-lg">by Barış Çetin</span>
       </motion.h1>
 
-      <div className="flex flex-col md:flex-row items-center justify-center gap-8 w-full max-w-6xl mx-auto">
-        <div className="flex-1 flex justify-center">
+      <div className="flex flex-col md:flex-row items-center justify-center gap-12 w-full max-w-6xl mx-auto">
+        {/* Sol taraf: Form */}
+        <div className="md:w-1/2 w-full flex justify-center px-4">
           <Card>
             <CardContent>
               <Input
@@ -182,7 +183,8 @@ export default function CaesarCipherLab() {
           </Card>
         </div>
 
-        <div className="flex-1 flex justify-center">
+        {/* Sağ taraf: Cipher Wheel */}
+        <div className="md:w-1/2 w-full flex justify-center items-center px-4">
           <CipherWheel shift={shift} />
         </div>
       </div>
