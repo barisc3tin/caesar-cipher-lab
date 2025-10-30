@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/ceasar-cipher-lab/',
+  base: '/caesar-cipher-lab/',
   build: {
     rollupOptions: {
       output: {
